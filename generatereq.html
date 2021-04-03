@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    {% load static %}
+    <script>
+      function validation()
+      {	
+
+        if(f1.hosid.value=="")
+			  {
+			    alert('hosid cannot be null');
+		      f1.hosid.focus();
+			    return false;
+        }
+        if(f1.p1.value=="")
+			  {
+			    alert('p1 cannot be null');
+		      f1.p1.focus();
+			    return false;
+        }
+        if(f1.category.value=="")
+			  {
+			    alert('category cannot be null');
+		      f1.category.focus();
+			    return false;
+        }
+        if(f1.critenia.value=="")
+			  {
+			    alert('critenia cannot be null');
+		      f1.critenia.focus();
+			    return false;
+        }
+        if(f1.reqdate.value=="")
+			  {
+			    alert('reqdate cannot be null');
+		      f1.reqdate.focus();
+			    return false;
+        }
+        if(f1.status.value=="")
+			  {
+			    alert('status cannot be null');
+		      f1.status.focus();
+			    return false;
+        }
+        return true;
+      }
+    </script>
+    
+    <link rel="stylesheet" href="{% static 'images/hospital.css' %}">
+    <style type="text/css">
+        input[type=date]{
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-top: 6px;
+      margin-bottom: 16px;
+      resize: vertical;
+      background-color: rgba(240, 240, 240, 0.39)
+    }
+    </style>
+</head>
+    {% include "hospitalheader.html" %}
+<body>
+  <h1 align="center"><font color="blue">Request Generation</font></h1>
+<div class="container">
+  <img src="{% static 'images/hs.jpg' %}" height="200px" width="550px">
+  <form action="/genregister/" name="f1" method="POST">
+    {% csrf_token %}
+    <label for="fname">Hospital_id</label>
+    <input type="text" name="hosid" placeholder="" value="{{h}}">
+
+    <label for="">Patient Id</label>
+      <select name="p1">
+        <option value="select">--Select--</option>
+        {% for p in pt %}     
+        <option value="{{p.patient_id}}">{{p.patient_id}}</option>
+        {% endfor %}
+      </select>
+
+    <label for="">Category</label>
+    <input type="text" name="category" placeholder="">
+
+    <label for="">Critenia</label>
+    <input type="text" name="critenia" placeholder="">
+
+    <label for="">Request Date</label>
+    <input type="date" name="reqdate" placeholder=""><br>
+
+    <label for="">Status</label>
+    <input type="text" name="status" placeholder="">
+
+
+    <input type="submit" value="Submit" onclick="return validation();">
+  </form>
+</div>
+
+</body>
+</html>

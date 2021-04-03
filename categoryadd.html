@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <script>
+      function validation()
+      {	
+
+        if(f1.category.value=="")
+			  {
+			    alert('category cannot be null');
+		      f1.category.focus();
+			    return false;
+        }
+        if(f1.description.value=="")
+			  {
+			    alert('description cannot be null');
+		      f1.description.focus();
+			    return false;
+        }
+        return true;
+      }
+      </script>
+    <link rel="stylesheet" href="{% static 'images/hospital.css' %}">
+</head>
+    {% include "adminheader.html" %}
+<body>
+  <h1 align="center"><font color="blue">Category Form</font></h1>
+<div class="container">
+  <img src="{% static 'images/hs.jpg' %}" height="200px" width="550px">
+  <form action="/catregister/" name="f1" method="POST">
+    {% csrf_token %}
+    <label for="fname">Category</label>
+    <input type="text" name="category" placeholder="">
+
+    <label for="subject">Description</label>
+    <textarea name="description" placeholder="" style="height:150px"></textarea>
+
+    <input type="submit" value="Submit" onclick="return validation();">
+  </form>
+</div>
+
+</body>
+</html>

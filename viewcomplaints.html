@@ -1,0 +1,83 @@
+<html>
+	<head>
+		{% load static %}
+		
+		<style type="text/css">
+			.t
+			{
+				font-family:"Trebuchet ms";
+				width:80%;
+				border-collapse:collapse;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 5%;
+				
+			}
+
+			.c{
+				color: rgb(231, 16, 16);
+				font-family: fantasy;
+				font-size: xx-large;
+			}
+			td, th
+			{
+				font-size:1em;
+				border:2px solid rgb(160, 160, 250);
+				padding:15px 6px 15px 6px;
+				
+			}
+			 th
+			{
+				font-size:1.1em;
+				text-align=left;
+				padding-top:18px;
+				padding-bottom:25px;
+				background-color:#3461f7;
+				color:#0f0f0f;
+			}
+			
+		        .alt:nth-child(even)
+			{
+				background-color:#afe5f1;
+			}
+			.alt:nth-child(odd)
+			{
+				background-color:#5dd6f1;
+			}
+		</style>
+	</head>
+	<div class="basic">
+		{% include "adminheader.html" %}
+	</div>
+	<body>
+			
+		<table class="t">
+			<caption class="c">View Complaints</caption>
+			<tr>
+				<th>Donar_id</th>
+				<th>Complaint Date</th>
+                <th>Complaint</th>
+				
+			</tr>
+			{% for c in cp %}
+			<tr class="alt">
+				<td>{{c.donar_id}}</td>
+				<td>{{c.complaint_date}}</td>
+                <td>{{c.complaint}}</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</body>
+</html>
+				
+
+
+
+
+
+
+
+
+
+
+

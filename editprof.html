@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <script>
+      function validation()
+      {	
+
+        if(f1.name.value=="")
+			  {
+			    alert('name cannot be null');
+		      f1.name.focus();
+			    return false;
+        }
+        if(f1.address.value=="")
+			  {
+			    alert('address cannot be null');
+		      f1.address.focus();
+			    return false;
+        }
+        if(f1.phone.value=="")
+			  {
+			    alert('phone cannot be null');
+		      f1.phone.focus();
+			    return false;
+        }
+        if(isNaN(f1.phone.value))
+	      {
+		      alert('Enter Phone number in numeric format.');
+		      f1.phone.focus();
+          return false;
+		    }
+        if(f1.phone.value.length!=10)
+			  {
+			    alert('Phone Number should be 10');
+		      f1.phone.focus();
+			    return false;
+        }
+        if(f1.description.value=="")
+			  {
+			    alert('description cannot be null');
+		      f1.description.focus();
+			    return false;
+        }
+        if(f1.regdate.value=="")
+			  {
+			    alert('regdate cannot be null');
+		      f1.regdate.focus();
+			    return false;
+        }
+        if(f1.donationdate.value=="")
+			  {
+			    alert('donationdate cannot be null');
+		      f1.donationdate.focus();
+			    return false;
+        }
+        if(f1.bgroup.value=="")
+			  {
+			    alert('bgroup cannot be null');
+		      f1.bgroup.focus();
+			    return false;
+        }
+        if(f1.age.value=="")
+			  {
+			    alert('age cannot be null');
+		      f1.age.focus();
+			    return false;
+        }
+        if(f1.sex.value=="")
+			  {
+			    alert('sex cannot be null');
+		      f1.sex.focus();
+			    return false;
+        }
+        if(f1.cstatus.value=="")
+			  {
+			    alert('cstatus cannot be null');
+		      f1.cstatus.focus();
+			    return false;
+        }
+        return true;
+      }
+      </script>
+    <link rel="stylesheet" href="{% static 'images/hospital.css' %}">
+    <style type="text/css">
+    input[type=date]{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+  background-color: rgba(240, 240, 240, 0.39)
+}
+</style>
+</head>
+    {% include "donarheader.html" %}
+    
+<body>
+    <h1 align="center"><font color="blue">Donar Registration</font></h1>
+<div class="container">
+  <img src="{% static 'images/hs.jpg' %}" height="200px" width="550px">
+  <form action="/update/{{rm.id}}" name="f1" method="POST">
+    {% csrf_token %}
+    <label for="fname">Name</label>
+    <input type="text" name="name" placeholder="" value="{{rm.name}}" readonly >
+
+    <label for="subject">Address</label>
+    <input type="text" name="address" placeholder="" style="height:150px" value="{{rm.address}}">
+
+    <label for="">Phone</label>
+    <input type="text" name="phone" placeholder="" value="{{rm.phone}}">
+
+    <label for="subject">Description</label>
+    <input type="text" name="description" placeholder="" style="height:150px" value="{{rm.description}}">
+
+    <label for="">Reg_date</label>
+    <input type="text" name="regdate" placeholder="" value="{{rm.reg_date}}" readonly>
+
+    <label for="">Last donation_date</label>
+    <input type="text" name="donationdate" placeholder="" value="{{rm.last_donation_date}}">
+
+    <label for="">Blood Group</label>
+    <input type="text" name="bgroup" placeholder="" value="{{rm.bloodgroup}}" readonly>
+
+    <label for="">Age</label>
+    <input type="text" name="age" placeholder="" value="{{rm.age}}">
+
+    <label for="">Sex</label>
+    <input type="text" name="sex" placeholder="" value="{{rm.sex}}" readonly>
+
+    <label for="">Covid Status</label>
+    <input type="text" name="cstatus" placeholder="" value="{{rm.covid_status}}">
+
+    <input type="submit" value="Submit" onclick="return validation();">
+  </form>
+</div>
+
+</body>
+</html>

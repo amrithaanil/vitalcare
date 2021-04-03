@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    {% load static %}
+    <script>
+      function validation()
+      {	
+
+        if(f1.donid.value=="")
+			  {
+			    alert('donid cannot be null');
+		      f1.donid.focus();
+			    return false;
+        }
+        if(f1.complant.value=="")
+			  {
+			    alert('complant cannot be null');
+		      f1.complant.focus();
+			    return false;
+        }
+        return true;
+      }
+      </script>
+    <link rel="stylesheet" href="{% static 'images/hospital.css' %}">
+    <style type="text/css">
+        input[type=date]{
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-top: 6px;
+      margin-bottom: 16px;
+      resize: vertical;
+      background-color: rgba(240, 240, 240, 0.39)
+    }
+    </style>
+</head>
+    {% include "donarheader.html" %}
+<body>
+  <h1 align="center"><font color="blue">Add Complaint</font></h1>
+<div class="container">
+  <img src="{% static 'images/hs.jpg' %}" height="200px" width="550px">
+  <form action="/compregister/" name="f1" method="POST">
+    {% csrf_token %}
+    <label for="fname">Donar_id</label>
+    <input type="text" name="donid" placeholder="" value="{{d}}">
+
+    <label for="">Complaint</label>
+    <textarea name="complant" placeholder="" style="height:150px"></textarea>
+
+    <input type="submit" value="Submit" onclick="return validation();">
+  </form>
+</div>
+
+</body>
+</html>

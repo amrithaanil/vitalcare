@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    {% load static %}
+    <script>
+      function validation()
+      {	
+
+        if(f1.reqid.value=="")
+			  {
+			    alert('reqid cannot be null');
+		      f1.reqid.focus();
+			    return false;
+        }
+        if(f1.donid.value=="")
+			  {
+			    alert('donid cannot be null');
+		      f1.donid.focus();
+			    return false;
+        }
+        if(f1.hosid.value=="")
+			  {
+			    alert('hosid cannot be null');
+		      f1.hosid.focus();
+			    return false;
+        }
+        if(f1.category.value=="")
+			  {
+			    alert('category cannot be null');
+		      f1.category.focus();
+			    return false;
+        }
+        if(f1.donname.value=="")
+			  {
+			    alert('donarname cannot be null');
+		      f1.donname.focus();
+			    return false;
+        }
+        if(f1.status.value=="")
+			  {
+			    alert('status cannot be null');
+		      f1.status.focus();
+			    return false;
+        }
+        return true;
+      }
+    </script>
+    <link rel="stylesheet" href="{% static 'images/hospital.css' %}">
+    <style type="text/css">
+        input[type=date]{
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-top: 6px;
+      margin-bottom: 16px;
+      resize: vertical;
+      background-color: rgba(240, 240, 240, 0.39)
+    }
+    </style>
+</head>
+    {% include "publicheader.html" %}
+<body>
+  <h1 align="center"><font color="blue">Request Generation</font></h1>
+<div class="container">
+  <img src="{% static 'images/hs.jpg' %}" height="200px" width="550px">
+  <form action="/donregister/{{r.request_id}},{{d.donar_id}}" method="POST">
+    {% csrf_token %}
+    <label for="fname">Request_id</label>
+    <input type="text" name="reqid" placeholder="" value="{{r.request_id}}">
+
+    <label for="">Donar_id</label>
+    <input type="text" name="donid" placeholder="" value="{{d.donar_id}}">
+
+    <label for="">Hospital_id</label>
+    <input type="text" name="hosid" placeholder="" value="{{r.hospital_id}}">
+
+    <label for="">Category</label>
+    <input type="text" name="category" placeholder="" value="{{r.category}}">
+
+    <label for="">Donar name</label>
+    <input type="text" name="donname" placeholder="" value="{{d.name}}">
+
+    <label for="">Status</label>
+    <input type="text" name="status" placeholder="" value="{{r.status}}">
+
+
+    <input type="submit" value="Submit" onclick="return validation();">
+  </form>
+</div>
+
+</body>
+</html>

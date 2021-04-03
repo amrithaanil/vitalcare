@@ -1,0 +1,89 @@
+<html>
+	<head>
+		{% load static %}
+		
+		<style type="text/css">
+			.t
+			{
+				font-family:"Trebuchet ms";
+				width:80%;
+				border-collapse:collapse;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 5%;
+				
+			}
+
+			.c{
+				color: rgb(231, 16, 16);
+				font-family: fantasy;
+				font-size: xx-large;
+			}
+			td, th
+			{
+				font-size:1em;
+				border:2px solid rgb(160, 160, 250);
+				padding:15px 6px 15px 6px;
+				
+			}
+			 th
+			{
+				font-size:1.1em;
+				text-align=left;
+				padding-top:18px;
+				padding-bottom:25px;
+				background-color:#3461f7;
+				color:#0f0f0f;
+			}
+			
+		        .alt:nth-child(even)
+			{
+				background-color:#afe5f1;
+			}
+			.alt:nth-child(odd)
+			{
+				background-color:#5dd6f1;
+			}
+		</style>
+	</head>
+	<div class="basic">
+		{% include "publicheader.html" %}
+	</div>
+	<body>
+			
+		<table class="t">
+			<caption class="c">View Hospital's</caption>
+			<tr>
+				<th>Hospital_id</th>
+				<th>Name</th>
+                <th>Email</th>
+				<th>Address</th>
+				<th>Phone</th>
+				<th>Status</th>
+			</tr>
+			{% for h in hs %}
+			<tr class="alt">
+				<td>{{h.hospital_id}}</td>
+				<td>{{h.name}}</td>
+                <td>{{h.email}}</td>
+				<td>{{h.address}}</td>
+				<td>{{h.phone}}</td>
+				<td>{{h.status}}</td>
+			
+			</tr>
+			{% endfor %}
+		</table>
+	</body>
+</html>
+				
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    {% load static %}
+    <script>
+      function validation()
+      {	
+
+        if(f1.name.value=="")
+			  {
+			    alert('name cannot be null');
+		      f1.name.focus();
+			    return false;
+        }
+        if(f1.address.value=="")
+			  {
+			    alert('address cannot be null');
+		      f1.address.focus();
+			    return false;
+        }
+        if(f1.phone.value=="")
+			  {
+			    alert('phone cannot be null');
+		      f1.phone.focus();
+			    return false;
+        }
+        if(isNaN(f1.phone.value))
+	      {
+		      alert('Enter Phone number in numeric format.');
+		      f1.phone.focus();
+          return false;
+		    }
+        if(f1.phone.value.length!=10)
+			  {
+			    alert('Phone Number should be 10');
+		      f1.phone.focus();
+			    return false;
+        }
+        if(f1.description.value=="")
+			  {
+			    alert('description cannot be null');
+		      f1.description.focus();
+			    return false;
+        }
+        if(f1.regdate.value=="")
+			  {
+			    alert('regdate cannot be null');
+		      f1.regdate.focus();
+			    return false;
+        }
+        if(f1.donationdate.value=="")
+			  {
+			    alert('donationdate cannot be null');
+		      f1.donationdate.focus();
+			    return false;
+        }
+        if(f1.bgroup.value=="")
+			  {
+			    alert('bgroup cannot be null');
+		      f1.bgroup.focus();
+			    return false;
+        }
+        if(f1.age.value=="")
+			  {
+			    alert('age cannot be null');
+		      f1.age.focus();
+			    return false;
+        }
+        if(f1.sex.value=="")
+			  {
+			    alert('sex cannot be null');
+		      f1.sex.focus();
+			    return false;
+        }
+        if(f1.cstatus.value=="")
+			  {
+			    alert('cstatus cannot be null');
+		      f1.cstatus.focus();
+			    return false;
+        }
+        return true;
+      }
+      </script>
+    <link rel="stylesheet" href="{% static 'images/hospital.css' %}">
+    <style type="text/css">
+    input[type=date]{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+  background-color: rgba(240, 240, 240, 0.39)
+}
+</style>
+</head>
+    {% include "hospitalheader.html" %}
+    
+<body>
+    <h1 align="center"><font color="blue">Donar Registration</font></h1>
+<div class="container">
+  <img src="{% static 'images/hs.jpg' %}" height="200px" width="550px">
+  <form action="/hdregister/" name="f1" method="POST">
+    {% csrf_token %}
+    <label for="fname">Name</label>
+    <input type="text" name="name" placeholder="Your name..">
+
+    <label for="subject">Address</label>
+    <textarea name="address" placeholder="" style="height:150px"></textarea>
+
+    <label for="">Phone</label>
+    <input type="text" name="phone" placeholder="">
+
+    <label for="subject">Description</label>
+    <textarea name="description" placeholder="" style="height:150px"></textarea>
+
+    <label for="">Reg_date</label>
+    <input type="date" name="regdate" placeholder="">
+
+    <label for="">Last donation_date</label>
+    <input type="date" name="donationdate" placeholder="">
+
+    <label for="">Blood Group</label>
+      <select name="bgroup">
+        <option value="select">--Select--</option>   
+        <option value="A+ve">A+ve</option>
+        <option value="A+ve">A-ve</option>
+        <option value="A+ve">B+ve</option>
+        <option value="A+ve">B-ve</option>
+        <option value="A+ve">O+ve</option>
+        <option value="A+ve">O-ve</option>
+        <option value="A+ve">AB+ve</option>
+        <option value="A+ve">AB-ve</option>
+      </select>
+
+    <label for="">Age</label>
+    <input type="text" name="age" placeholder="">
+
+    <label for="">Sex</label>
+    <input type="radio" name="sex" placeholder="" value="Male">Male
+    <input type="radio" name="sex" placeholder="" value="Female">Female<br><br>
+
+    <label for="">Covid Status</label>
+    <select name="cstatus">
+      <option value="select">--Select--</option>   
+      <option value="Positive">Positive</option>
+      <option value="Negative">Negative</option>
+
+    <input type="submit" value="Submit" onclick="return validation();">
+  </form>
+</div>
+
+</body>
+</html>

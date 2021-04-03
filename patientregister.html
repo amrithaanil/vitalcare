@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <script>
+      function validation()
+      {	
+
+        if(f1.name.value=="")
+			  {
+			    alert('name cannot be null');
+		      f1.name.focus();
+			    return false;
+        }
+        if(f1.hosid.value=="")
+			  {
+			    alert('hosid cannot be null');
+		      f1.hosid.focus();
+			    return false;
+        }
+        if(f1.address.value=="")
+			  {
+			    alert('address cannot be null');
+		      f1.address.focus();
+			    return false;
+        }
+        if(f1.sex.value=="")
+			  {
+			    alert('sex cannot be null');
+		      f1.sex.focus();
+			    return false;
+        }
+        if(f1.age.value=="")
+			  {
+			    alert('age cannot be null');
+		      f1.age.focus();
+			    return false;
+        }
+        return true;
+      }
+      </script>
+    <link rel="stylesheet" href="{% static 'images/hospital.css' %}">
+</head>
+    {% include "hospitalheader.html" %}
+<body>
+  <h1 align="center"><font color="blue">Patient Registration</font></h1>
+<div class="container">
+  <img src="{% static 'images/hs.jpg' %}" height="200px" width="550px">
+  <form action="/patregister/" name="f1" method="POST">
+    {% csrf_token %}
+    <label for="fname">Name</label>
+    <input type="text" name="name" placeholder="name..">
+
+    <label for="">Hospital_id</label>
+    <input type="text" name="hosid" placeholder="" value="{{h}}">
+
+    <label for="subject">Address</label>
+    <textarea name="address" placeholder="" style="height:150px"></textarea>
+
+    <label for="">Sex</label>
+    <input type="radio" name="sex" placeholder="" value="Male">Male
+    <input type="radio" name="sex" placeholder="" value="Female">Female<br><br>
+
+    <label for="">Age</label>
+    <input type="text" name="age" placeholder="">
+
+    <input type="submit" value="Submit" onclick="return validation();">
+  </form>
+</div>
+
+</body>
+</html>

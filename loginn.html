@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    {% load static %}
+    <script>
+			function validation()
+			{
+				if(f1.username.value=="")
+				{
+					alert('username cannot be null');
+		    	f1.username.focus();
+					return false;
+        }
+        if(f1.password.value=="")
+				{
+					alert('password cannot be null');
+		    	f1.password.focus();
+					return false;
+        }
+        return true;
+      } 
+    </script>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <style type="text/css">
+        h1{
+            color: rgb(255, 0, 0);
+            padding-top: 1px;
+            padding-bottom: 47px;
+
+        }
+        h2{
+            color: rgb(38, 0, 255);
+            padding-left: 10px;
+        }
+        .wrapperr {
+    min-height: 95vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center; }
+  
+    .innerr {
+      min-width: 390px;
+      min-height: 50%;
+      margin: auto;
+      background-repeat: no-repeat;
+      padding-top: 90px;
+      padding-bottom: 60px;
+    }
+    .form-controll {
+    border: 1px solid #ccc;
+    display: block;
+    width: 70%;
+    height: 45px;
+    padding: 0 20px;
+    border-radius: 20px;
+    font-family: "Muli-Bold";
+    background:#fff; }
+    .form-controll:focus {
+      border: 1px solid #ae3c33; }
+
+      .buttonn {
+    border: none;
+    width: 50%;
+    height: 40px;
+    margin: auto;
+    margin-right: 1px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    padding: 0;
+    background: #ae3c33;
+    font-size: 13px;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: "Muli-SemiBold";
+    border-radius: 20px;
+    }
+    </style>
+	</head>
+<div class="basic">
+	{% include "publicheader.html" %}
+</div>
+	<body>
+
+		<div class="wrapperr" style="background-image: url('{% static 'images/image2.jpg' %}');">
+			<div class="innerr"  style="background-image: url('{% static 'images/22.jpg' %}');">
+                <h1 align="center">Login Here</h1>
+        <form action="/logregister/" name="f1" method="POST">
+          {% csrf_token %} 
+					<div class="form-wrapper">
+						<label for=""><h2>Username</h2></label>
+						<input type="text" name="username" class="form-controll">
+					</div>
+					<div class="form-wrapper">
+						<label for=""><h2>Password</h2></label>
+						<input type="password" name="password" class="form-controll">
+                    </div><br>
+                    <div class="form-wrapper"><br><br>
+					<input type="submit" value="Login" class="buttonn" onclick="return validation();">
+				</form>
+			</div>
+		</div>
+		
+	</body>
+</html>

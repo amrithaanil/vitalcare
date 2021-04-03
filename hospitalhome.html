@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        {% load static %}
+        <style type="text/css">
+			.wrapper {
+	        min-height: 90vh;
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center; }
+
+            marquee{
+                font-family:fantasy;
+                font-size:450%;
+                color: rgb(91, 91, 245);
+                text-shadow: 4px 4px #f72727 ;
+                
+            }
+                
+        </style>
+    </head>
+    <div class="basic">
+		{% include "hospitalheader.html" %}
+	</div>
+    <body>
+        <div class="wrapper" style="background-image: url('{% static 'images/h3.jpg' %}');">         
+
+    </body>
